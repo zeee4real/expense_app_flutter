@@ -1,5 +1,6 @@
 import './transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,6 +29,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             width: double.infinity,
@@ -35,6 +37,30 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text("Chart!"),
               elevation: 5,
+            ),
+          ),
+          Card(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                      decoration: InputDecoration(
+                    labelText: 'Title',
+                  )),
+                  TextField(
+                      decoration: InputDecoration(
+                    labelText: 'Amount',
+                  )),
+                  FlatButton(
+                    onPressed: () {},
+                    color: Colors.purple,
+                    textColor: Colors.white,
+                    child: Text('Add Transaction'),
+                  )
+                ],
+              ),
             ),
           ),
           Column(
@@ -54,7 +80,7 @@ class MyHomePage extends StatelessWidget {
                       )),
                       padding: EdgeInsets.all(12),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$ ${tx.amount}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -70,7 +96,7 @@ class MyHomePage extends StatelessWidget {
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          tx.date.toString(),
+                          DateFormat.yMMMMd().add_jm().format(tx.date),
                           style: TextStyle(color: Colors.grey),
                         )
                       ],
