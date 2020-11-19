@@ -23,16 +23,16 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: Colors.purple,
+                    color: Theme.of(context).primaryColor,
                     width: 2,
                   )),
                   padding: EdgeInsets.all(12),
                   child: Text(
-                    '\$ ${_userTransactions[index].amount}',
+                    '\$ ${_userTransactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.purple),
+                        color: Theme.of(context).primaryColor),
                   ),
                 ),
                 Column(
